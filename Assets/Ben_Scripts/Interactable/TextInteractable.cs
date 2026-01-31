@@ -5,7 +5,7 @@ using System.Buffers.Text;
 
 public class TextInteractable : BaseInteractable
 {
-    public TextMeshPro objectText;
+    public TextMeshProUGUI objectText;
     public float offSetY;
     public string message; 
 
