@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
     public GameObject pauseUI;
     public GameObject gameplayUI;
     public GameObject sceneUI;
+    public GameObject journalUI; 
     public GameObject winUI;
     public GameObject loseUI; 
 
@@ -44,6 +45,11 @@ public class UIManager : MonoBehaviour
         ActivateUI(sceneUI);
     }
 
+    public void ActivateJournalUI() 
+    {
+        ActivateUI(journalUI);
+    }
+
     public void ActivateWinUI() 
     {
         ActivateUI(winUI);
@@ -67,6 +73,9 @@ public class UIManager : MonoBehaviour
         pauseUI.SetActive(false);
         gameplayUI.SetActive(false);
         sceneUI.SetActive(false);
+        journalUI.SetActive(false);
+        winUI.SetActive(false);
+        loseUI.SetActive(false);
         
     }
 
