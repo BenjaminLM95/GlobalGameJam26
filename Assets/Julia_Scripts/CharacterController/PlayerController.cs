@@ -37,9 +37,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float sprintSpeed = 5f;
     [SerializeField] private float crouchSpeed = 3f;
     [SerializeField] private float speedTransitionDuration = 0.25f;
+    [SerializeField] private float jumpForce = 5f;
 
     private bool sprintInput = false;
     private bool crouchInput = false;
+    private bool jumpInput = false;
 
     private void Update()
     {
@@ -76,11 +78,18 @@ public class PlayerController : MonoBehaviour
         Vector3 horizontalMovement = worldMoveDirection * currentSpeed;
 
         // handle jumping & gravity
+        Vector3 gravity = Physics.gravity * Time.deltaTime;
+        // jump checks if input context was performed
 
-
+        if(characterController.isGrounded && jumpInput == true)
+        {
+            gravity.y = jumpForce; 
+            if(characterController.isGrounded)
+                jumpInput = false; 
+        }
+        
         // combine horizontal & vertical movement
-        Vector3 movement = horizontalMovement;
-
+        Vector3 movement = horizontalMovement + gravity;
         characterController.Move(movement * Time.deltaTime * currentSpeed) ;
     }
     
@@ -121,6 +130,7 @@ public class PlayerController : MonoBehaviour
     {
         if (jumpEnabled && context.started)
             Debug.Log("Jump started");
+            jumpInput = true;
 
         if (context.performed)
             Debug.Log("Jump held");
@@ -155,7 +165,7 @@ public class PlayerController : MonoBehaviour
     {
         // change character height (and speed?)
         if (context.started)
-            Debug.Log("Crouch cancelled");
+            Debug.Log("Crouch started");
 
         if (context.performed)
             Debug.Log("Crouch held");
