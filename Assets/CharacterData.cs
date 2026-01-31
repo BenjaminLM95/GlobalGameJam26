@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Character Data")]
-public class CharacterData : ScriptableObject, Imo
+public class CharacterData : ScriptableObject //, Imo
 {
     public enum favColor
     {
