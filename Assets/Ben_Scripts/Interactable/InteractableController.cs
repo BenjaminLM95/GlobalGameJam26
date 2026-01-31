@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InteractableController : MonoBehaviour
 {
     [SerializeField] GameObject interactableObject = null;
+    [SerializeField] TextMeshProUGUI interactablePromptObj; 
 
     public UserInput userInput; 
 
@@ -37,7 +39,8 @@ public class InteractableController : MonoBehaviour
             
             if(interactableObject == null) 
             {
-                interactableObject = hitInfo.collider.gameObject; 
+                interactableObject = hitInfo.collider.gameObject;
+                interactablePromptObj.gameObject.SetActive(true); 
             }
 
 
@@ -46,7 +49,8 @@ public class InteractableController : MonoBehaviour
         {
             if(interactableObject != null) 
             {
-                interactableObject = null; 
+                interactableObject = null;
+                interactablePromptObj.gameObject.SetActive(false);
             }
         }
     }
