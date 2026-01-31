@@ -1,85 +1,108 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
 
-public class UserInput : MonoBehaviour
+public class UserInput : MonoBehaviour, InputSystem_Actions.IPlayerActions
 {
-    public static UserInput Instance { get; private set; }
-
-    public Vector2 MoveInput { get; private set; }
-    public Vector2 LookInput { get; private set; }
-    public bool JumpJustPressed { get; private set; }
-    public bool MainInput { get; private set; }
-    public bool RunInput { get; private set; }
-    public bool MenuOpenCloseInput { get; private set; }
-    public bool CancelInput { get; private set; }
-    public bool AttackInput { get; private set; }
-    public bool InteractInput { get; private set; }
-    public bool CrouchInput { get; private set; }
-
-    private PlayerInput _playerInput;
-    private InputAction _moveAction;
-    private InputAction _lookAction;
-    private InputAction _jumpAction;
-    private InputAction _runAction;
-    private InputAction _attackAction;
-    private InputAction _interactAction;
-    private InputAction _crouchAction;
-
-    InputAction moveAction;
-    Vector2 lookRotation;
-
-    private void Awake()
+    private InputSystem_Actions inputs;
+    void Awake()
     {
-        if(Instance == null)
+        try
         {
-            Instance = this;
+            inputs = new InputSystem_Actions();
+            inputs.Player.SetCallbacks(this);
+            inputs.Player.Enable();
         }
-
-        _playerInput = GetComponent<PlayerInput>();
-
-        SetupInputActions();
+        catch (Exception exception)
+        {
+            Debug.LogError($"Error initializing InputManager: {exception.Message}");
+        }
     }
 
-    private void Update()
+    #region Input Events
+
+    // Events that are triggered when input activity is detected
+    public event Action<Vector2> MoveInputEvent;
+    public event Action<Vector2> LookInputEvent;
+
+    // jumping
+    public event Action<InputAction.CallbackContext> JumpInputEvent;
+    
+    // sprint
+    public event Action<InputAction.CallbackContext> SprintInputEvent;
+
+    // crouch
+    public event Action<InputAction.CallbackContext> CrouchInputEvent;
+    // attack
+    public event Action<InputAction.CallbackContext> AttackInputEvent;
+    // interact
+    public event Action<InputAction.CallbackContext> InteractInputEvent;
+
+    public event Action<InputAction.CallbackContext> OnPreviousInputEvent;
+    public event Action<InputAction.CallbackContext> OnNextInputEvent;
+
+
+    #endregion
+
+    #region Input Callbacks
+
+    // handle input action callbacks abd dispatches input data to listeners
+    public void OnMove(InputAction.CallbackContext context)
     {
-        UpdateInputs();
+        MoveInputEvent?.Invoke(context.ReadValue<Vector2>());
     }
 
-    private void SetupInputActions()
+    public void OnLook(InputAction.CallbackContext context)
     {
-
-        _moveAction = _playerInput.actions["Move"];
-
-        _lookAction = _playerInput.actions["Look"];
-
-        _attackAction = _playerInput.actions["Attack"];
-
-        _interactAction = _playerInput.actions["Interact"];
-
-        _crouchAction = _playerInput.actions["Crouch"];
-
-        _jumpAction = _playerInput.actions["Jump"];
-
-        _runAction = _playerInput.actions["Sprint"];
+        LookInputEvent?.Invoke(context.ReadValue<Vector2>());
     }
 
-    private void UpdateInputs()
+    public void OnJump(InputAction.CallbackContext context)
     {
+        JumpInputEvent?.Invoke(context);
+    }
 
-        MoveInput = _moveAction.ReadValue<Vector2>();
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        SprintInputEvent?.Invoke(context);
+    }
 
-        LookInput = _lookAction.ReadValue<Vector2>();
+    public void OnCrouch(InputAction.CallbackContext context)
+    {
+        CrouchInputEvent?.Invoke(context);
+    }
 
-        JumpJustPressed = _jumpAction.WasPressedThisFrame();
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        AttackInputEvent?.Invoke(context);
+    }
 
-        RunInput = _runAction.IsPressed();
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        InteractInputEvent?.Invoke(context);
+    }
 
-        AttackInput = _attackAction.WasPressedThisFrame();
+    public void OnPrevious(InputAction.CallbackContext context)
+    {
+        OnPreviousInputEvent?.Invoke(context);
+    }
+    public void OnNext(InputAction.CallbackContext context)
+    {
+        OnNextInputEvent?.Invoke(context);
+    }
 
-        InteractInput = _interactAction.WasPressedThisFrame();
+    #endregion
 
-        CrouchInput = _crouchAction.WasPressedThisFrame();
+    void OnEnable()
+    {
+        if (inputs != null)
+            inputs.Player.Enable();
+    }
+
+    void OnDestroy()
+    {
+        if (inputs != null)
+            inputs.Player.Disable();
     }
 }
