@@ -23,17 +23,35 @@ public class GameStateManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        ChangeGameState(mainMenuState);
-        ChangeGameState(pauseState); 
-        ChangeGameState(gameplayState);
-        ChangeGameState(sceneState); 
+        EnterMenu();
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentGameState.StateUpdate();
+        //currentGameState.StateUpdate();
     }
+
+    public void EnterMenu() 
+    {
+        ChangeGameState(mainMenuState);
+    }
+
+    public void EnterPause() 
+    {
+        ChangeGameState(pauseState);
+    }
+
+    public void EnterGameplay() 
+    {
+        ChangeGameState(gameplayState);
+    }
+
+    public void EnterScene() 
+    {
+        ChangeGameState(sceneState);
+    }
+
 
     public void ChangeGameState(IGameState gameState) 
     {
