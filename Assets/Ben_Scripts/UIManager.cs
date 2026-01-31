@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour
     public void ActivateMenuUI() 
     {
         ActivateUI(mainMenuUI);
+        PauseTime();
     }
 
     public void ActivatePauseUI(InputAction.CallbackContext context) 
@@ -129,5 +130,8 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
     }
+
+    // select ui button with controller d-pad
+    
 
 }
