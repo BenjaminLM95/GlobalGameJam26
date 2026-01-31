@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PauseState : IGameState
+public class PauseState : MonoBehaviour, IGameState
 {
     public void Enter()
     {

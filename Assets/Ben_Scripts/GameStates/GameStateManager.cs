@@ -7,12 +7,11 @@ public class GameStateManager : MonoBehaviour
 
     #region All Game States 
 
-    public IGameState mainMenuState;
-    public IGameState pauseState;
-    public IGameState gameplayState;
-    public IGameState sceneState; 
-    public IGameState winGameState;
-    public IGameState loseGameState; 
+    public MainMenuState mainMenuState;
+    public PauseState pauseState;
+    public GamePlayState gameplayState;
+    public SceneState sceneState; 
+    
 
     #endregion
 

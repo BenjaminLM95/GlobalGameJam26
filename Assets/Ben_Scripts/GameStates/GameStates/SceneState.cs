@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SceneState : IGameState
+public class SceneState : MonoBehaviour, IGameState
 {
     public void Enter()
     {
