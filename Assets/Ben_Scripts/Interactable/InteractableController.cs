@@ -1,18 +1,25 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InteractableController : MonoBehaviour
 {
     [SerializeField] GameObject interactableObject = null;
 
+    public UserInput userInput; 
 
     [Header("Raycast Settings")]
     public float rayDistance = 5f;       // How far the ray should go
     public LayerMask hitLayers;           // Layers to detect (set in Inspector)
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void OnEnable()
     {
-        
+        userInput.InteractInputEvent += InteractWithObject; 
+    }
+
+    private void OnDisable()
+    {
+        userInput.InteractInputEvent -= InteractWithObject;
     }
 
     // Update is called once per frame
@@ -26,7 +33,7 @@ public class InteractableController : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, rayDistance, hitLayers))
         {
             // Log the name of the object hit
-            Debug.Log("Hit: " + hitInfo.collider.name);
+            //Debug.Log("Hit: " + hitInfo.collider.name);
             
             if(interactableObject == null) 
             {
@@ -44,12 +51,12 @@ public class InteractableController : MonoBehaviour
         }
     }
 
-    private void InteractWithObject() 
+    private void InteractWithObject(InputAction.CallbackContext context) 
     {
         if(interactableObject != null) 
         {
-            interactableObject.GetComponent<IInteractable>().Interact(); 
-            
+            interactableObject.GetComponent<BaseInteractable>().Interact();
+             
         }
     }
 
