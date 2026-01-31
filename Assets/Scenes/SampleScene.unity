@@ -642,7 +642,6 @@ MonoBehaviour:
   currentSpeed: 0
   walkSpeed: 4
   sprintSpeed: 5
-  crouchSpeed: 3
   speedTransitionDuration: 0.25
   jumpForce: 8
 --- !u!114 &1649627198
