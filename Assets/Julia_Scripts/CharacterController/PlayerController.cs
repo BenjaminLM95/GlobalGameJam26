@@ -82,18 +82,36 @@ public class PlayerController : MonoBehaviour
         Vector3 gravity = Physics.gravity * Time.deltaTime;
         // jump checks if input context was performed
 
-        if(characterController.isGrounded && jumpInput == true)
+        if(IsGrounded() && jumpInput == true )
         {
             gravity.y = jumpForce; 
-            if(characterController.isGrounded)
-                jumpInput = false; 
+            bool notGrounded = !characterController.isGrounded;
+            notGrounded = true;
+        }
+        else
+        {
+            jumpInput = false;
         }
         
         // combine horizontal & vertical movement
         Vector3 movement = horizontalMovement + gravity;
         characterController.Move(movement * Time.deltaTime * currentSpeed) ;
     }
-    
+
+    void OnCollisionStay(Collision other)
+    {
+        if(other.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log("Landed on ground");
+            IsGrounded();
+        }
+    }
+
+    bool IsGrounded()
+    {
+        return characterController.isGrounded;
+    }
+
     public void HandlePlayerLook()
     {
         if (!lookEnabled) return;
@@ -166,7 +184,10 @@ public class PlayerController : MonoBehaviour
     {
         // change character height (and speed?)
         if (context.started)
+        {
             Debug.Log("Crouch started");
+            crouchInput = true;
+        }
 
         if (context.performed)
             Debug.Log("Crouch held");

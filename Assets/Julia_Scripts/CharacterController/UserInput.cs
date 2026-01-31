@@ -58,7 +58,7 @@ public class UserInput : MonoBehaviour, InputSystem_Actions.IPlayerActions
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        JumpInputEvent?.Invoke(context); // not found?
+        JumpInputEvent?.Invoke(context); 
     }
 
     public void OnSprint(InputAction.CallbackContext context)
@@ -68,7 +68,7 @@ public class UserInput : MonoBehaviour, InputSystem_Actions.IPlayerActions
 
     public void OnCrouch(InputAction.CallbackContext context)
     {
-        CrouchInputEvent?.Invoke(context); // not found?
+        CrouchInputEvent?.Invoke(context); 
     }
 
     public void OnAttack(InputAction.CallbackContext context)
