@@ -37,6 +37,7 @@ public class UIManager : MonoBehaviour
 
     public void ActivateMenuUI() 
     {
+        AudioManager.Instance.PlayMusic("MainMenuMusic");
         ActivateUI(mainMenuUI);
         PauseTime();
     }
@@ -52,6 +53,7 @@ public class UIManager : MonoBehaviour
 
     public void ActivateGameplayUI() 
     {
+        AudioManager.Instance.PlayMusic("GameplayMusic");
         ActivateUI(gameplayUI);
         ResumeTime();
     }
@@ -64,6 +66,7 @@ public class UIManager : MonoBehaviour
     public void ActivateJournalUI(InputAction.CallbackContext context) 
     {
         if(context.performed){
+            AudioManager.Instance.PlaySFX("JournalOpening");
             ActivateUI(journalUI);
             PauseTime();
         }
@@ -74,8 +77,9 @@ public class UIManager : MonoBehaviour
         ActivateUI(winUI);
     }
 
-    public void ActivateLoseUI() 
+    public void ActivateLoseUI()
     {
+        AudioManager.Instance.PlayMusic("GameOverMusic");
         ActivateUI(loseUI);
     }
 
