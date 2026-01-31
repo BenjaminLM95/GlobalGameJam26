@@ -11,7 +11,7 @@ public class PauseState : MonoBehaviour, IGameState
 
     public void Enter()
     {
-        uiManager.ActivatePauseUI(); 
+        uiManager.ActivatePauseUI(context: default); 
         Debug.Log("Pause Enter");
     }
 

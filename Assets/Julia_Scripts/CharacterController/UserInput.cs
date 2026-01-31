@@ -39,7 +39,8 @@ public class UserInput : MonoBehaviour, InputSystem_Actions.IPlayerActions
 
     public event Action<InputAction.CallbackContext> OnPreviousInputEvent;
     public event Action<InputAction.CallbackContext> OnNextInputEvent;
-
+    public event Action<InputAction.CallbackContext> OnPauseInputEvent;
+    public event Action<InputAction.CallbackContext> OnJournalInputEvent;
 
     #endregion
 
@@ -88,6 +89,14 @@ public class UserInput : MonoBehaviour, InputSystem_Actions.IPlayerActions
     public void OnNext(InputAction.CallbackContext context)
     {
         OnNextInputEvent?.Invoke(context);
+    }
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        OnPauseInputEvent?.Invoke(context);
+    }
+    public void OnJournal(InputAction.CallbackContext context)
+    {
+        OnJournalInputEvent?.Invoke(context);
     }
 
     #endregion
