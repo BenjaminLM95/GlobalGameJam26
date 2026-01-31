@@ -6166,6 +6166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTime: 240
   timerText: {fileID: 1680123541}
+  numbers: []
 --- !u!1 &1721571712
 GameObject:
   m_ObjectHideFlags: 0
