@@ -117,6 +117,13 @@ public class PlayerController : MonoBehaviour
         float lookX = lookInput.x * horizontalLookSensitivity * Time.deltaTime;
         float lookY = lookInput.y * verticalLookSensitivity * Time.deltaTime;
 
+        // increase sensitivity when using controller input
+        if (Gamepad.current != null)
+        {
+            lookX *= 10f;
+            lookY *= 10f;
+        }
+
         // rotate left-right
         transform.Rotate(Vector3.up * lookX);
 
