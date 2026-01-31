@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20523155d0a5a3241837ac9b0a34997d, type: 3}
+  m_Name: Benjamin
+  m_EditorClassIdentifier: 
+  _characterName: Benjamin
+  _favColor: 1
+  _gender: 1
+  _mood: 0
+  _personality: 2
+  allOptionDialogue:
+  - Hi how are you?
+  - '*Grunts*'
+  - Why does everyone look happy?
+  - When I went to the bathroom I saw a sponge, so I was confused. It was like, why
+    you there bro?

@@ -1,0 +1,204 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System;
+using UnityEngine.InputSystem;
+using Unity.VisualScripting;
+
+public class PlayerController : MonoBehaviour
+{
+    [SerializeField]private UserInput inputManager;
+    private CharacterController characterController => GetComponent<CharacterController>();
+
+    [SerializeField] private Transform cameraRoot;
+    public Transform CameraRoot => cameraRoot;
+
+    [Header("Enable/Disable Controls & Features")]
+    public bool moveEnabled = true;
+    public bool lookEnabled = true;
+
+    [SerializeField] private bool jumpEnabled = true;
+    [SerializeField] private bool sprintEnabled = true;
+
+    [Header("Look Settings")]
+    public Vector2 lookInput;
+    // camera look
+    public float horizontalLookSensitivity = 1;
+    public float verticalLookSensitivity = 1;
+
+    [SerializeField] float upperLookLimit = 60;
+    [SerializeField] float lowerLookLimit = -60;
+
+    [SerializeField] public bool invertLookY { get; private set; } = false;
+
+    [Header("Movement Settings")]
+    public Vector2 moveInput;
+    [SerializeField] private float currentSpeed;
+    [SerializeField] private float walkSpeed = 4f;
+    [SerializeField] private float sprintSpeed = 5f;
+    [SerializeField] private float speedTransitionDuration = 0.25f;
+    [SerializeField] private float jumpForce = 5f;
+
+    private bool sprintInput = false;
+    private bool jumpInput = false;
+
+    private void Update()
+    {
+        HandlePlayerMovement();
+    }
+
+    private void LateUpdate()
+    {
+        HandlePlayerLook();
+    }
+
+    public void HandlePlayerMovement()
+    {
+        if (!moveEnabled) return;
+
+        // get input direction
+        Vector3 moveInputDirection = new Vector3(moveInput.x, 0, moveInput.y);
+        Vector3 worldMoveDirection = transform.TransformDirection(moveInputDirection);
+
+        float targetSpeed;
+
+        if(sprintInput == true) {
+            targetSpeed = sprintSpeed;
+        }
+        else {
+            targetSpeed = walkSpeed;
+        }
+
+        // handle sprint acelleration
+        float lerpSpeed = 1f - Mathf.Pow(0.01f, Time.deltaTime / speedTransitionDuration);
+        currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, lerpSpeed);
+
+        // handle horizontal mvmt
+        Vector3 horizontalMovement = worldMoveDirection * currentSpeed;
+
+        // handle jumping & gravity
+        Vector3 gravity = Physics.gravity * Time.deltaTime;
+        // jump checks if input context was performed
+
+        if(IsGrounded() && jumpInput == true )
+        {
+            gravity.y = jumpForce; 
+            bool notGrounded = !characterController.isGrounded;
+            notGrounded = true;
+        }
+        else
+        {
+            jumpInput = false;
+        }
+        
+        // combine horizontal & vertical movement
+        Vector3 movement = horizontalMovement + gravity;
+        characterController.Move(movement * Time.deltaTime * currentSpeed) ;
+    }
+
+    void OnCollisionStay(Collision other)
+    {
+        if(other.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log("Landed on ground");
+            IsGrounded();
+        }
+    }
+
+    bool IsGrounded()
+    {
+        return characterController.isGrounded;
+    }
+
+    public void HandlePlayerLook()
+    {
+        if (!lookEnabled) return;
+
+        float lookX = lookInput.x * horizontalLookSensitivity * Time.deltaTime;
+        float lookY = lookInput.y * verticalLookSensitivity * Time.deltaTime;
+
+        // increase sensitivity when using controller input
+        if (Gamepad.current != null)
+        {
+            lookX *= 10f;
+            lookY *= 10f;
+        }
+
+        // rotate left-right
+        transform.Rotate(Vector3.up * lookX);
+
+        // tilting on x axis up-down
+        Vector3 currentAngle = cameraRoot.localEulerAngles;
+        float newRotationX = currentAngle.x - lookY;
+
+        // clamping look limit
+        newRotationX = (newRotationX > 180) ? newRotationX - 360 : newRotationX;
+        newRotationX = Mathf.Clamp(newRotationX, lowerLookLimit, upperLookLimit);
+
+        cameraRoot.localEulerAngles = new Vector3(newRotationX, 0, 0);
+    }
+
+    void SetMoveInput(Vector2 inputVector)
+    {
+        moveInput = new Vector2(inputVector.x, inputVector.y ); 
+    }
+
+    void SetLookInput(Vector2 inputVector)
+    {
+        lookInput = new Vector2(inputVector.x, inputVector.y);
+        Debug.Log($"Look Input: {lookInput}");
+    }
+
+    #region Jump event
+    void JumpHandler(InputAction.CallbackContext context)
+    {
+        if (jumpEnabled && context.started)
+            Debug.Log("Jump started");
+            jumpInput = true;
+
+        if (context.performed)
+            Debug.Log("Jump held");
+
+        if (context.canceled)
+            Debug.Log("Jump cancelled");
+    }
+    #endregion
+
+    #region Sprint event
+
+    void SprintHandler(InputAction.CallbackContext context)
+    {
+        if (sprintEnabled == false) return;
+
+        if (context.started) 
+        {
+            sprintInput = true;
+            currentSpeed = walkSpeed;
+            Debug.Log("Sprinting");
+        }                
+        if (context.canceled)
+        {
+            sprintInput = false;
+            Debug.Log("Sprint cancelled");
+        }
+    }
+    #endregion
+
+    void OnEnable()
+    {
+        inputManager.MoveInputEvent += SetMoveInput;
+        inputManager.LookInputEvent += SetLookInput;
+
+        inputManager.SprintInputEvent += SprintHandler; 
+        inputManager.JumpInputEvent += JumpHandler;
+    }
+
+    void OnDestroy()
+    {
+        inputManager.MoveInputEvent -= SetMoveInput;
+        inputManager.LookInputEvent -= SetLookInput;
+
+        inputManager.SprintInputEvent -= SprintHandler; 
+        inputManager.JumpInputEvent -= JumpHandler;
+    }
+}

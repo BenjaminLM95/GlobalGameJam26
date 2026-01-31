@@ -17,25 +17,50 @@ public class GameStateManager : MonoBehaviour
 
     private IGameState currentGameState;
     private IGameState previousGameState;
-    public string currentGameStateString {  get; private set; } 
+    public string currentGameStateString; //{  get; private set; } 
        
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        EnterMenu();
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentGameState.Update();
+        //currentGameState.StateUpdate();
     }
+
+    public void EnterMenu() 
+    {
+        ChangeGameState(mainMenuState);
+    }
+
+    public void EnterPause() 
+    {
+        ChangeGameState(pauseState);
+    }
+
+    public void EnterGameplay() 
+    {
+        ChangeGameState(gameplayState);
+    }
+
+    public void EnterScene() 
+    {
+        ChangeGameState(sceneState);
+    }
+
 
     public void ChangeGameState(IGameState gameState) 
     {
-        currentGameState.Exit();
-        previousGameState = currentGameState; 
+        if (currentGameState != null)
+        {
+            currentGameState.Exit();
+            previousGameState = currentGameState;
+        }                
+        
         currentGameState = gameState;
         currentGameStateString = currentGameState.ToString();
         currentGameState.Enter(); 
