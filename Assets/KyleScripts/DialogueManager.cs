@@ -6,23 +6,35 @@ using UnityEngine;
 /// <summary>
 /// Basic dialogue manager. Should probably derrive from singleton if we're using a singleton.
 /// </summary>
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : Singleton<DialogueManager>
 {
     public GameObject dialoguePanel;     // The UI element to display dialogue.
     public string[] DialogueLines; // Lines of dialogue to display.
     public TextMeshProUGUI dialogueText; // The text component to show dialogue.
     public Queue<string> dialogue; // The queue to manage sentences.
+    public Queue<char> dialogueSentence;
 
     private Coroutine displayCoroutine; // Coroutine that displays text letter by letter.
     private string currentSentence; // Current sentence displayed.
+    [SerializeField] bool isDialogueStarted = false;
+    public bool IsDialogueStarted { get { return isDialogueStarted; } }
 
+    public override void Awake()
+    {
+        base.Awake();
+    }
+    private void OnEnable()
+    {
+        Events.OnDialogueStarted.Add(StartDialogue);
+    }
     private void Start()
     {
         // Initialize empty queue.
         dialogue = new Queue<string>();
+        dialogueSentence = new Queue<char>();
     }
 
-    public void StartDialogue(string[] sentences)
+    /*public void StartDialogue(string[] sentences)
     {
         // Clear the queue and add the new sentences.
         dialogue.Clear();
@@ -35,8 +47,20 @@ public class DialogueManager : MonoBehaviour
         }
         // Display the first sentence.
         DisplayNextSentence();
-    }
+    }*/
 
+    public void StartDialogue(string sentence)
+    {
+        dialogueSentence.Clear();
+        dialoguePanel.SetActive(true);
+
+        isDialogueStarted=true;
+        foreach (char c in sentence)
+        {
+            dialogueSentence.Enqueue(c);
+        }
+        displayCoroutine = StartCoroutine(DisplayDialogueCoroutine(sentence));
+    }
     public void DisplayNextSentence()
     {
         // If a coroutine is running, stop it and display the full sentence.
@@ -82,7 +106,15 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text = currentSentence.Substring(0, i + 1);
             yield return new WaitForSecondsRealtime(0.05f);
         }
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(2f);
         displayCoroutine = null;
+        CloseDialogueBox();
+    }
+
+    private void CloseDialogueBox()
+    {
+        dialogueText.text = string.Empty;
+        dialoguePanel.SetActive(false);
+        isDialogueStarted = false;
     }
 }
