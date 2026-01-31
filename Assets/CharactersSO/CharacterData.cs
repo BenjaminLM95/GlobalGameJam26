@@ -8,7 +8,7 @@ public class CharacterData : ScriptableObject //, Imo
 
     public enum favColor
     {
-        Red, Green, Blue, Pink, Yellow
+        Red, Green, Blue, Pink, Yellow, Ferdigris, Purple, Cyan
     }
 
     public enum gender
