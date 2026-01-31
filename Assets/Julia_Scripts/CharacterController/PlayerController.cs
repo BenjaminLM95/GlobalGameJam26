@@ -36,12 +36,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float currentSpeed;
     [SerializeField] private float walkSpeed = 4f;
     [SerializeField] private float sprintSpeed = 5f;
-    [SerializeField] private float crouchSpeed = 3f;
     [SerializeField] private float speedTransitionDuration = 0.25f;
     [SerializeField] private float jumpForce = 5f;
 
     private bool sprintInput = false;
-    private bool crouchInput = false;
     private bool jumpInput = false;
 
     private void Update()
@@ -179,31 +177,12 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    #region Crouch event
-    void CrouchHandler(InputAction.CallbackContext context)
-    {
-        // change character height (and speed?)
-        if (context.started)
-        {
-            Debug.Log("Crouch started");
-            crouchInput = true;
-        }
-
-        if (context.performed)
-            Debug.Log("Crouch held");
-
-        if (context.canceled)
-            Debug.Log("Crouch cancelled");
-    }
-    #endregion
-
     void OnEnable()
     {
         inputManager.MoveInputEvent += SetMoveInput;
         inputManager.LookInputEvent += SetLookInput;
 
         inputManager.SprintInputEvent += SprintHandler; 
-        inputManager.CrouchInputEvent += CrouchHandler;
         inputManager.JumpInputEvent += JumpHandler;
     }
 
@@ -213,7 +192,6 @@ public class PlayerController : MonoBehaviour
         inputManager.LookInputEvent -= SetLookInput;
 
         inputManager.SprintInputEvent -= SprintHandler; 
-        inputManager.CrouchInputEvent -= CrouchHandler;
         inputManager.JumpInputEvent -= JumpHandler;
     }
 }
