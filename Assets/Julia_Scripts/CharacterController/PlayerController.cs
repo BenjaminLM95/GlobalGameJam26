@@ -183,7 +183,10 @@ public class PlayerController : MonoBehaviour
     {
         // change character height (and speed?)
         if (context.started)
+        {
             Debug.Log("Crouch started");
+            crouchInput = true;
+        }
 
         if (context.performed)
             Debug.Log("Crouch held");
