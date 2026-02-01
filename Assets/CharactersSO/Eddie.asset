@@ -12,13 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20523155d0a5a3241837ac9b0a34997d, type: 3}
   m_Name: Eddie
   m_EditorClassIdentifier: 
-  _characterName: 
-  _favColor: 5
+  _characterName: Eddie
+  _favColor: 2
   _gender: 0
-  _mood: 0
-  _personality: 4
+  _keyword: 
+  keyWords:
+  - blue
+  - female
+  - stake
   allOptionDialogue:
-  - 
-  - 
-  - 
-  - 
+  - I think I heard a female grunt before a sickening sound
+  - I thought I saw the killer wearing blue
+  - I like your mask!
+  - Go away, I don't asociate myself with the common wealth!
+  - I want to go home...
+  - It's so fun here! all these people are so kind, but no one seems to be as interested
+    as I do?
+  - I don't like blood it doesn't go well with blue.

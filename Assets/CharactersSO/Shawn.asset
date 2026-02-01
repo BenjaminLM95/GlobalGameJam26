@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: Shawn
   m_EditorClassIdentifier: 
   _characterName: Shawn
-  _favColor: 3
+  _favColor: 0
   _gender: 1
-  _mood: 0
-  _personality: 1
+  keyWords:
+  - red
+  - male
+  - holywater
   allOptionDialogue:
-  - I like your mask!
-  - Go away, I don't associate myself with the Common wealth!
-  - I want to go home..
-  - It's so fun here! all these people are so kind, but no one seems to be as interested
-    as I do?
+  - God I feel like I've been here for maybe 6 or 7 hours.
+  - Do you think a dark banner would look nice for decor? I thing a maroon.. maybe
+    red?
+  - Do you believe in superstitions? I always carry around holy water just in case...
+  - This place is creeping me out...I think I saw a male sneak around the back of
+    the building...

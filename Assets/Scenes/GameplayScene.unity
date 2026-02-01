@@ -2363,7 +2363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 349436646}
   m_Layer: 5
-  m_Name: MaleCircle
+  m_Name: male
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4759,7 +4759,7 @@ GameObject:
   m_Component:
   - component: {fileID: 703402769}
   m_Layer: 5
-  m_Name: FemaleCircle
+  m_Name: female
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7364,7 +7364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 938517243}
   m_Layer: 5
-  m_Name: StakeCircles
+  m_Name: stake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8792,7 +8792,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1048972945}
   m_Layer: 5
-  m_Name: Circles
+  m_Name: garlic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14214,7 +14214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1597924994}
   m_Layer: 5
-  m_Name: GreenCircle
+  m_Name: colorGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16653,7 +16653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1866090296}
   m_Layer: 5
-  m_Name: HolyWaterCircle
+  m_Name: holywater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17111,7 +17111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1904244954}
   m_Layer: 5
-  m_Name: BlueCircle
+  m_Name: colorBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17452,7 +17452,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1958632182}
   m_Layer: 5
-  m_Name: RedCircle
+  m_Name: colorRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

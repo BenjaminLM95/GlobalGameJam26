@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20523155d0a5a3241837ac9b0a34997d, type: 3}
   m_Name: Kieran
   m_EditorClassIdentifier: 
-  _characterName: 
-  _favColor: 6
+  _characterName: Kieran
+  _favColor: 2
   _gender: 1
-  _mood: 0
-  _personality: 9
+  keyWords:
+  - blue
+  - male
+  - holywater
   allOptionDialogue:
-  - 
-  - 
-  - 
-  - 
+  - I saw traces of holy water around the room
+  - You are so good
+  - I can't even fathom how other people dont like the color blue
+  - I like water, and blue, that's why my weapon of choice is holy water. It's also
+    an emergency vampire repellant
