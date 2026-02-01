@@ -15,11 +15,13 @@ MonoBehaviour:
   _characterName: Benjamin
   _favColor: 1
   _gender: 1
-  _mood: 0
-  _personality: 2
+  _keyword: 
+  keyWords:
+  - male
+  - green
+  - garlic
   allOptionDialogue:
-  - Hi how are you?
-  - '*Grunts*'
-  - Why does everyone look happy?
-  - When I went to the bathroom I saw a sponge, so I was confused. It was like, why
-    you there bro?
+  - A male was pushing people right before the death
+  - I saw a green clad figure run away from the body
+  - I love the color green, it makes me happy!
+  - I like using garlic

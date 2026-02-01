@@ -2363,7 +2363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 349436646}
   m_Layer: 5
-  m_Name: MaleCircle
+  m_Name: male
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3745,6 +3745,81 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &581490485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 581490486}
+  - component: {fileID: 581490488}
+  - component: {fileID: 581490487}
+  m_Layer: 5
+  m_Name: iconJournal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &581490486
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581490485}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.2138, y: 2.2138, z: 2.2138}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1452743412}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -763, y: 368}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &581490487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581490485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: eb5cb56d20931984a80709888ab421c8, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &581490488
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581490485}
+  m_CullTransparentMesh: 1
 --- !u!1 &588392346
 GameObject:
   m_ObjectHideFlags: 0
@@ -4759,7 +4834,7 @@ GameObject:
   m_Component:
   - component: {fileID: 703402769}
   m_Layer: 5
-  m_Name: FemaleCircle
+  m_Name: female
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7364,7 +7439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 938517243}
   m_Layer: 5
-  m_Name: StakeCircles
+  m_Name: stake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8792,7 +8867,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1048972945}
   m_Layer: 5
-  m_Name: Circles
+  m_Name: garlic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8904,7 +8979,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1054811084
 Transform:
   m_ObjectHideFlags: 0
@@ -11988,9 +12063,9 @@ RectTransform:
   - {fileID: 1910682257}
   m_Father: {fileID: 1048926385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 50.7, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1328833525
@@ -13560,7 +13635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1452743412
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13574,11 +13649,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 905367303}
+  - {fileID: 1054811084}
   - {fileID: 1054659541}
   - {fileID: 2003721950}
   - {fileID: 1671439783}
   - {fileID: 2118841900}
-  - {fileID: 1054811084}
+  - {fileID: 581490486}
   m_Father: {fileID: 1841743251}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -14214,7 +14290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1597924994}
   m_Layer: 5
-  m_Name: GreenCircle
+  m_Name: colorGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14462,13 +14538,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1644337795}
+  - component: {fileID: 1644337796}
   m_Layer: 5
   m_Name: JournalScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1644337795
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14498,6 +14575,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1644337796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644337794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43eff0e434f816b4e8ea6d2687ddb642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorRed: {fileID: 1958632181}
+  colorGreen: {fileID: 1597924993}
+  colorBlue: {fileID: 1904244953}
+  holyWater: {fileID: 1866090295}
+  stake: {fileID: 938517242}
+  garlic: {fileID: 1048972944}
+  male: {fileID: 349436645}
+  female: {fileID: 703402768}
 --- !u!1 &1648103689
 GameObject:
   m_ObjectHideFlags: 0
@@ -15473,7 +15570,7 @@ RectTransform:
   m_Father: {fileID: 905367303}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -82.22189, y: -0.2010994}
   m_SizeDelta: {x: -177.8857, y: -19.4597}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -16653,7 +16750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1866090296}
   m_Layer: 5
-  m_Name: HolyWaterCircle
+  m_Name: holywater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17111,7 +17208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1904244954}
   m_Layer: 5
-  m_Name: BlueCircle
+  m_Name: colorBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17452,7 +17549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1958632182}
   m_Layer: 5
-  m_Name: RedCircle
+  m_Name: colorRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

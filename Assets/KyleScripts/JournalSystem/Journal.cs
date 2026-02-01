@@ -23,14 +23,14 @@ public class Journal : MonoBehaviour
 
     private void ActivateClue(string name)
     {
-        if (colorRed.name == name) colorRed.SetActive(true);
-        if (colorGreen.name == name) colorGreen.SetActive(true);
-        if (colorBlue.name == name) colorBlue.SetActive(true);
-        if (holyWater.name == name) holyWater.SetActive(true);
-        if (stake.name == name) stake.SetActive(true);
-        if (garlic.name == name) garlic.SetActive(true);
-        if (male.name == name) male.SetActive(true);
-        if (female.name == name) female.SetActive(true);
+        if (colorRed.name == name.ToLower()) colorRed.SetActive(true);
+        if (colorGreen.name == name.ToLower()) colorGreen.SetActive(true);
+        if (colorBlue.name == name.ToLower()) colorBlue.SetActive(true);
+        if (holyWater.name == name.ToLower()) holyWater.SetActive(true);
+        if (stake.name == name.ToLower()) stake.SetActive(true);
+        if (garlic.name == name.ToLower()) garlic.SetActive(true);
+        if (male.name == name.ToLower()) male.SetActive(true);
+        if (female.name == name.ToLower()) female.SetActive(true);
     }
 
     private void OnDisable()
