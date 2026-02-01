@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     public GameObject loseUI; 
     public GameObject settingsUI; 
     public GameObject creditsUI; 
+    public GameObject introUI;
 
     private GameObject lastActiveUI;
 
@@ -106,6 +107,11 @@ public class UIManager : MonoBehaviour
         if(lastActiveUI != null)
             lastActiveUI.SetActive(true);
     }
+    public void ActivateIntroUI()
+    {
+        ActivateUI(introUI);
+        PauseTime();
+    }
 
     private void DisactivateAllUI() 
     {
@@ -118,6 +124,7 @@ public class UIManager : MonoBehaviour
         loseUI.SetActive(false);
         settingsUI.SetActive(false);
         creditsUI.SetActive(false);
+        introUI.SetActive(false);
         
     }
 
