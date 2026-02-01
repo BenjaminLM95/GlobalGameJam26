@@ -45,7 +45,14 @@ public class InteractionDisplay : MonoBehaviour
 
     private void DisableTextElements() 
     {
-        interactionText.gameObject.SetActive(false);
-        textSquare.gameObject.SetActive(false);
+        if(interactionText != null && textSquare != null)
+        {
+            interactionText.gameObject.SetActive(false);
+            textSquare.gameObject.SetActive(false);
+        }
+        else if (textSquare == null)
+        {
+            Debug.Log("Youre bad");
+        }
     }
 }

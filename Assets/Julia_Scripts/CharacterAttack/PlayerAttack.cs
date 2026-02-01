@@ -57,12 +57,12 @@ public class PlayerAttack : MonoBehaviour
         if(context.started)
         {
             attackInput = true;
-            Debug.Log("Attack started");
+            //Debug.Log("Attack started");
         }
         if(context.canceled)
         {
             //attackInput = false;
-            Debug.Log("Attack cancelled");
+            //Debug.Log("Attack cancelled");
         }
     }
     

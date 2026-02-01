@@ -4,6 +4,8 @@ public class GamePlayState : MonoBehaviour, IGameState
 {
     private UIManager uiManager;
 
+    public GameObject gameplayObjects; 
+
     private void Awake()
     {
         uiManager = FindFirstObjectByType<UIManager>();
@@ -12,6 +14,7 @@ public class GamePlayState : MonoBehaviour, IGameState
     public void Enter()
     {
         uiManager.ActivateGameplayUI(); 
+        gameplayObjects.SetActive(true);
         Debug.Log("Gameplay Enter");
     }
 
