@@ -51,6 +51,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public void StartDialogue(string sentence)
     {
+        Debug.Log("Starting dialogue");
         dialogueSentence.Clear();
         dialoguePanel.SetActive(true);
 
@@ -60,6 +61,7 @@ public class DialogueManager : Singleton<DialogueManager>
             dialogueSentence.Enqueue(c);
         }
         displayCoroutine = StartCoroutine(DisplayDialogueCoroutine(sentence));
+        
     }
     public void DisplayNextSentence()
     {
@@ -104,6 +106,7 @@ public class DialogueManager : Singleton<DialogueManager>
             // Play type writer sound here.
             // While coroutine is running, display the sentence letter by letter.
             dialogueText.text = currentSentence.Substring(0, i + 1);
+            Debug.Log("Started dialogue coroutine...");
             yield return new WaitForSecondsRealtime(0.05f);
         }
         yield return new WaitForSecondsRealtime(2f);

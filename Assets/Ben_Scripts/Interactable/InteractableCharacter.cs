@@ -17,6 +17,7 @@ public class InteractableCharacter : BaseInteractable
 
     public override void Interact()
     {
+        Debug.Log("Interact called");
         GetRandomMood();
 
         if (!firstTime)
@@ -29,8 +30,13 @@ public class InteractableCharacter : BaseInteractable
         if (!DialogueManager.Instance.IsDialogueStarted)
         {
             // TODO instead of publishing entire string, find a key word to give clue of who is talking.
-            string clue = characterData.keyWords[currentDialogueIndex];
-            Events.AddClueToJournal.Publish(clue);
+            if(currentDialogueIndex < characterData.keyWords.Length && currentDialogueIndex > 0)
+            {
+                Debug.Log("Adding clue to journal");
+                string clue = characterData.keyWords[currentDialogueIndex];
+                Events.AddClueToJournal.Publish(clue);
+            }
+            Events.OnDialogueStarted.Publish(characterDialogue);
         }
 
     }

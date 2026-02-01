@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Journal : MonoBehaviour
@@ -12,25 +13,26 @@ public class Journal : MonoBehaviour
     [SerializeField] private GameObject garlic;
     [SerializeField] private GameObject male;
     [SerializeField] private GameObject female;
+    [SerializeField] private TextMeshProUGUI nameText;
 
     private void OnEnable()
     {
-        Events.AddHunterName.Add(SetHunterName);
         Events.OnHunterPicked.Add(SetCharacter);
+        Events.AddHunterName.Add(SetHunterName);
         Events.AddClueToJournal.Add(ActivateClue);
         SetAllInactive();
     }
 
     private void ActivateClue(string name)
     {
-        if (colorRed.name == name.ToLower()) colorRed.SetActive(true);
-        if (colorGreen.name == name.ToLower()) colorGreen.SetActive(true);
-        if (colorBlue.name == name.ToLower()) colorBlue.SetActive(true);
-        if (holyWater.name == name.ToLower()) holyWater.SetActive(true);
-        if (stake.name == name.ToLower()) stake.SetActive(true);
-        if (garlic.name == name.ToLower()) garlic.SetActive(true);
-        if (male.name == name.ToLower()) male.SetActive(true);
-        if (female.name == name.ToLower()) female.SetActive(true);
+        if (colorRed.name == name) colorRed.SetActive(true);
+        if (colorGreen.name == name) colorGreen.SetActive(true);
+        if (colorBlue.name == name) colorBlue.SetActive(true);
+        if (holyWater.name == name) holyWater.SetActive(true);
+        if (stake.name == name) stake.SetActive(true);
+        if (garlic.name == name) garlic.SetActive(true);
+        if (male.name == name) male.SetActive(true);
+        if (female.name == name) female.SetActive(true);
     }
 
     private void OnDisable()
@@ -47,6 +49,7 @@ public class Journal : MonoBehaviour
     private void SetHunterName(string name)
     {
         hunterName = name;
+        nameText.text = hunterName;
     }
 
     private void SetAllInactive()
