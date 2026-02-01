@@ -1,47 +1,63 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Journal : MonoBehaviour
 {
-    List<Entry> entries = new List<Entry>();
+    private CharacterData character;
+    private string hunterName;
+    [SerializeField] private GameObject colorRed;
+    [SerializeField] private GameObject colorGreen;
+    [SerializeField] private GameObject colorBlue;
+    [SerializeField] private GameObject holyWater;
+    [SerializeField] private GameObject stake;
+    [SerializeField] private GameObject garlic;
+    [SerializeField] private GameObject male;
+    [SerializeField] private GameObject female;
 
     private void OnEnable()
     {
-        Events.OnAddJournalEntry.Add(AddEntry);
+        Events.AddHunterName.Add(SetHunterName);
+        Events.OnHunterPicked.Add(SetCharacter);
+        Events.AddClueToJournal.Add(ActivateClue);
+        SetAllInactive();
+    }
+
+    private void ActivateClue(string name)
+    {
+        if (colorRed.name == name) colorRed.SetActive(true);
+        if (colorGreen.name == name) colorGreen.SetActive(true);
+        if (colorBlue.name == name) colorBlue.SetActive(true);
+        if (holyWater.name == name) holyWater.SetActive(true);
+        if (stake.name == name) stake.SetActive(true);
+        if (garlic.name == name) garlic.SetActive(true);
+        if (male.name == name) male.SetActive(true);
+        if (female.name == name) female.SetActive(true);
     }
 
     private void OnDisable()
     {
-        Events.OnAddJournalEntry.Remove(AddEntry);
+        Events.AddHunterName.Add(SetHunterName);
+        Events.OnHunterPicked.Add(SetCharacter);
     }
 
-    public void AddEntry(CharacterData characterData)
+    private void SetCharacter(CharacterData character)
     {
-        Entry entry = new() { 
-            Name = characterData.name,
-            Color = characterData._favColor.ToString(),
-            Gender = characterData._gender.ToString(),
-            Mood = characterData._mood.ToString()
-        };
-        if (!entries.Contains(entry))
-        {
-            entries.Add(entry);
-        }
+        this.character = character;
     }
 
-    public void RemoveEntry(Entry entry)
+    private void SetHunterName(string name)
     {
-        if (entries.Contains(entry))
-        {
-            entries.Remove(entry);
-        }
+        hunterName = name;
     }
-}
 
-public struct Entry
-{
-    public string Name;
-    public string Color;
-    public string Gender;
-    public string Mood;
+    private void SetAllInactive()
+    {
+        colorRed.gameObject.SetActive(false);
+        colorGreen.gameObject.SetActive(false);
+        colorBlue.gameObject.SetActive(false);
+        holyWater.gameObject.SetActive(false);
+        stake.gameObject.SetActive(false);
+        garlic.gameObject.SetActive(false);
+        female.gameObject.SetActive(false);
+        male.gameObject.SetActive(false);
+    }
 }
