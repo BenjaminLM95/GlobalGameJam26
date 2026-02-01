@@ -62,8 +62,8 @@ public class TargetSystem : MonoBehaviour
 
         Debug.Log(rndIndex); 
         CharacterData removedItem = _charDatas[rndIndex];       
-        Debug.Log(removedItem.name); 
-
+        Debug.Log(removedItem.name);
+        Events.OnHunterPicked.Publish(hunter);
         hunter = removedItem;          
     }
 

@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class Journal : MonoBehaviour
@@ -19,7 +17,20 @@ public class Journal : MonoBehaviour
     {
         Events.AddHunterName.Add(SetHunterName);
         Events.OnHunterPicked.Add(SetCharacter);
+        Events.AddClueToJournal.Add(ActivateClue);
         SetAllInactive();
+    }
+
+    private void ActivateClue(string name)
+    {
+        if (colorRed.name == name) colorRed.SetActive(true);
+        if (colorGreen.name == name) colorGreen.SetActive(true);
+        if (colorBlue.name == name) colorBlue.SetActive(true);
+        if (holyWater.name == name) holyWater.SetActive(true);
+        if (stake.name == name) stake.SetActive(true);
+        if (garlic.name == name) garlic.SetActive(true);
+        if (male.name == name) male.SetActive(true);
+        if (female.name == name) female.SetActive(true);
     }
 
     private void OnDisable()
