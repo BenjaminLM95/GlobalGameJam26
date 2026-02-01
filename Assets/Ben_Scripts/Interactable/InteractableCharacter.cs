@@ -48,4 +48,9 @@ public class InteractableCharacter : BaseInteractable
         currentDialogueIndex = numIndex - 1;
         return characterData.allOptionDialogue[numIndex - 1]; 
     }
+
+    public string GetParticipantName() 
+    {
+        return characterData.name; 
+    }
 }
