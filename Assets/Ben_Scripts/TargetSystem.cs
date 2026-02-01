@@ -13,8 +13,14 @@ public class TargetSystem : MonoBehaviour
     [SerializeField] private CharacterData hunter = null;
     [SerializeField] private CharacterData victim = null;
 
-    public TextMeshProUGUI messageKilled; 
-    
+    public TextMeshProUGUI messageKilled;
+
+    private CharacterInPlay characterInPlay;
+
+    private void Awake()
+    {
+        characterInPlay = FindFirstObjectByType<CharacterInPlay>();
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,7 +31,9 @@ public class TargetSystem : MonoBehaviour
         PickAVictim(tempCharacterList);
 
         // Select the Hunter
-        PickAHunter(tempCharacterList);        
+        PickAHunter(tempCharacterList);
+
+        characterInPlay.DisactivateTarget(); 
 
     }
 
@@ -97,5 +105,14 @@ public class TargetSystem : MonoBehaviour
         messageKilled.gameObject.SetActive(false);
     }
 
+    public string GetHunterName() 
+    {
+        return hunter.name;
+    }
+
+    public string GetVictimName() 
+    {
+        return victim.name;
+    }
 
 }
