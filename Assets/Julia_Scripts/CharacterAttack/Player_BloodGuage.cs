@@ -28,7 +28,7 @@ public class Player_BloodGuage : MonoBehaviour
         {
             currentBlood = maxBlood;
         }
-        //Debug.Log($"Got blood! Current Blood: {currentBlood}");
+        Debug.Log($"Got blood! Current Blood: {currentBlood}");
         bloodGuageUI.SetBlood(currentBlood);
     }
 
