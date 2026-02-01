@@ -15,11 +15,13 @@ MonoBehaviour:
   _characterName: Jason
   _favColor: 2
   _gender: 1
-  _mood: 0
-  _personality: 0
+  keyWords:
+  - blue
+  - male
+  - stake
   allOptionDialogue:
-  - Hi, you look nice today!
-  - What do you want?
-  - ...hello...
-  - Hello! It's nice to meet you. I haven't been able to talk to someone in like..
-    2 minutes!
+  - I found a blue cloth on the floor, I wonder whose it is?
+  - I heard a male voice before the death.
+  - I hear a steak through the heart will cause a heart attack... bad dietary choices
+    kill
+  - There's blue people everywhere!

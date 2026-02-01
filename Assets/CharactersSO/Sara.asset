@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20523155d0a5a3241837ac9b0a34997d, type: 3}
   m_Name: Sara
   m_EditorClassIdentifier: 
-  _characterName: 
-  _favColor: 7
+  _characterName: Sara
+  _favColor: 0
   _gender: 0
-  _mood: 0
-  _personality: 8
+  keyWords:
+  - red
+  - female
+  - holywater
   allOptionDialogue:
-  - 
-  - 
-  - 
-  - 
+  - I think red is good for the noble class... I'll be one some day
+  - I broke my holy water bottle, I'll need a new one.. they're so expensive these
+    days
+  - Do you think steak cooked medium rare is good? I like rare, its red and tasty
+  - Hi...sorry I hate social events

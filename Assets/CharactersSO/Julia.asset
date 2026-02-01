@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20523155d0a5a3241837ac9b0a34997d, type: 3}
   m_Name: Julia
   m_EditorClassIdentifier: 
-  _characterName: 
-  _favColor: 6
+  _characterName: Julia
+  _favColor: 0
   _gender: 0
-  _mood: 0
-  _personality: 7
+  keyWords:
+  - female
+  - stake
+  - red
   allOptionDialogue:
-  - 
-  - 
-  - 
-  - 
+  - I found a stake inside the trash, I'm not lying I swear!
+  - Killing him was a huge missed-steak.... did I say that out loud? hehe
+  - The drinks are so good! I prefer red wine though...
+  - 'Oh great, another person is here... '
+  - I hear female voices when I get close to the chimney

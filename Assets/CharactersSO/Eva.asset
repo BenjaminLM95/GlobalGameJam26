@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20523155d0a5a3241837ac9b0a34997d, type: 3}
   m_Name: Eva
   m_EditorClassIdentifier: 
-  _characterName: 
-  _favColor: 3
+  _characterName: Eva
+  _favColor: 0
   _gender: 0
-  _mood: 0
-  _personality: 5
+  _keyword: 
+  keyWords:
+  - female
+  - red
+  - garlic
   allOptionDialogue:
-  - 
-  - 
-  - 
-  - 
+  - Hi how are you? I smell garlic
+  - I think red is a mysterious color
+  - They think they're big and strong for usng that, I like garlic better
+  - Why do I keep hearing voices? Most are female...

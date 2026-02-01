@@ -26,7 +26,7 @@ public class CharacterData : ScriptableObject //, Imo
     // Color, gender can be dialogue keywords.
     public favColor _favColor;
     public gender _gender;
-    public string _keyword;
+    //public string _keyword;
     public string[] keyWords = new string[4];
 
     public string[] allOptionDialogue = new string[4];

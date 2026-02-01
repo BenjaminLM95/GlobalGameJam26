@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20523155d0a5a3241837ac9b0a34997d, type: 3}
   m_Name: Hiral
   m_EditorClassIdentifier: 
-  _characterName: 
-  _favColor: 6
+  _characterName: Hiral
+  _favColor: 1
   _gender: 0
-  _mood: 0
-  _personality: 6
+  keyWords:
+  - green
+  - female
+  - garlic
   allOptionDialogue:
-  - 
-  - 
-  - 
-  - 
+  - You look like you could use a mea, some green vaggies!
+  - You're so bad
+  - Everything is expensive.... I need more of that green leaf
+  - They say the color of garlic goes with everything. I'm hungry
+  - I think females in STEM are nice

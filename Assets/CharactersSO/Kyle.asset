@@ -15,11 +15,13 @@ MonoBehaviour:
   _characterName: Kyle
   _favColor: 1
   _gender: 1
-  _mood: 0
-  _personality: 3
+  keyWords:
+  - green
+  - male
+  - stake
   allOptionDialogue:
-  - You look like you could use a meal.
-  - Your so Bad
-  - Everything is exspensive...
-  - I went to go get food, and they were so bad. I went earlier and they were fine!
-    Now when i try they don't work.
+  - You look like you could use a meal. I prefer steak, I use a stake to pierce it
+    for dramatic effect when eating.
+  - I thought I saw a male enter the bathroom before the murder
+  - I saw a flash of green from the other room
+  - ...hello...
