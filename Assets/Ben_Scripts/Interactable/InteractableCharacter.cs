@@ -5,7 +5,8 @@ public class InteractableCharacter : BaseInteractable
 {
     [SerializeField] private CharacterData characterData;
     [SerializeField] private bool firstTime = false;
-    public string characterDialogue;   
+    public string characterDialogue;
+    private int currentDialogueIndex = 0;
 
 
     private void Awake()
@@ -27,7 +28,9 @@ public class InteractableCharacter : BaseInteractable
 
         if (!DialogueManager.Instance.IsDialogueStarted)
         {
-            Events.OnDialogueStarted.Publish(characterDialogue);
+            // TODO instead of publishing entire string, find a key word to give clue of who is talking.
+            string clue = characterData.keyWords[currentDialogueIndex];
+            Events.AddClueToJournal.Publish(clue);
         }
 
     }
@@ -42,7 +45,7 @@ public class InteractableCharacter : BaseInteractable
 
     public string GetTheDialogue(int numIndex) 
     {
-
+        currentDialogueIndex = numIndex - 1;
         return characterData.allOptionDialogue[numIndex - 1]; 
     }
 

@@ -1,50 +1,33 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Character Data")]
 public class CharacterData : ScriptableObject //, Imo
 {
-    
-
+    bool isHunter = false;
     public enum favColor
     {
-        Red, Green, Blue, Pink, Yellow, Ferdigris, Purple, Cyan
+        Red, Green, Blue
     }
 
     public enum gender
     {
-        Female,Male,nonBinary
+        Female,Male, nonBinary
     }
 
-    public enum mood
+    public enum weapons 
     {
-        Depressed,
-        Nice,
-        Annoyed,
-        Talkative
+        HolyWater, Stake, Garlic
     }
 
-    public enum personality 
-    {
-        Anxious,
-        Melancholy,
-        Content,
-        Inspired,
-        Playful,
-        Bored,
-        Excited,
-        Relaxed,
-        Stressed,
-        Peaceful,
-        Joyful
-
-    }
 
     public string _characterName;
+    // Color, gender can be dialogue keywords.
     public favColor _favColor;
     public gender _gender;
-    public mood _mood;
-    public personality _personality;
+    public string _keyword;
+    public string[] keyWords = new string[4];
 
     public string[] allOptionDialogue = new string[4];
 
