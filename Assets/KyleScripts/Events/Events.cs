@@ -8,4 +8,7 @@ public static partial class Events
     public static readonly GameEvent<CharacterData> OnAddJournalEntry = new();
     public static readonly GameEvent<string> OnDialogueStarted = new();
     public static readonly GameEvent OnDialogueEnded = new();
+    public static readonly GameEvent<string> AddClueToJournal = new();
+    public static readonly GameEvent<string> AddHunterName = new();
+    public static readonly GameEvent<CharacterData> OnHunterPicked = new();
 }
