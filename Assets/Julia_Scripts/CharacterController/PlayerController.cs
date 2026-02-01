@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
     void SetLookInput(Vector2 inputVector)
     {
         lookInput = new Vector2(inputVector.x, inputVector.y);
-        Debug.Log($"Look Input: {lookInput}");
+        //Debug.Log($"Look Input: {lookInput}");
     }
 
     #region Jump event

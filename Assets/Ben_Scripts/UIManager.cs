@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
 
     private GameObject lastActiveUI;
 
+    public GameObject gameplayObjects; 
+
     void Start()
     {
         ActivateMenuUI();
@@ -56,6 +58,7 @@ public class UIManager : MonoBehaviour
     {
         AudioManager.Instance.PlayMusic("GameplayMusic");
         ActivateUI(gameplayUI);
+        gameplayObjects.SetActive(true);
         ResumeTime();
     }
 
@@ -125,6 +128,7 @@ public class UIManager : MonoBehaviour
         settingsUI.SetActive(false);
         creditsUI.SetActive(false);
         introUI.SetActive(false);
+        gameplayObjects.SetActive(false);
         
     }
 

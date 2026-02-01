@@ -28,7 +28,7 @@ public class Player_BloodGuage : MonoBehaviour
         {
             currentBlood = maxBlood;
         }
-        Debug.Log($"Got blood! Current Blood: {currentBlood}");
+        //Debug.Log($"Got blood! Current Blood: {currentBlood}");
         bloodGuageUI.SetBlood(currentBlood);
     }
 
@@ -38,7 +38,7 @@ public class Player_BloodGuage : MonoBehaviour
         while(currentBlood > 0)
         {
             currentBlood -= bloodDecayRate;
-            Debug.Log($"Current Blood after decay: {currentBlood}");
+            //Debug.Log($"Current Blood after decay: {currentBlood}");
             bloodGuageUI.SetBlood(currentBlood);
             yield return new WaitForSeconds(5f);
         }

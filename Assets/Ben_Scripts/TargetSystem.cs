@@ -16,6 +16,7 @@ public class TargetSystem : MonoBehaviour
     public TextMeshProUGUI messageKilled;
 
     private CharacterInPlay characterInPlay;
+    public TextMeshProUGUI killText;
 
     private void Awake()
     {
@@ -71,6 +72,7 @@ public class TargetSystem : MonoBehaviour
         Debug.Log(rndIndex); 
         CharacterData removedItem = _charDatas[rndIndex];       
         Debug.Log(removedItem.name);
+        Events.AddHunterName.Publish(removedItem.name);
         Events.OnHunterPicked.Publish(hunter);
         hunter = removedItem;          
     }
@@ -94,9 +96,9 @@ public class TargetSystem : MonoBehaviour
 
     private void PopMurderMessageUp() 
     {
-        messageKilled.gameObject.SetActive(true);
-        messageKilled.text = $"{victim.name} was killed";
-        StartCoroutine("RemoveMurderKill"); 
+        killText.gameObject.SetActive(true);
+        killText.text = $"{victim.name} was killed";
+        //StartCoroutine(RemoveMurderKill()); 
     }
 
     private IEnumerator RemoveMurderKill() 
