@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine.InputSystem;
-using UnityEditor.PackageManager;
 using Unity.VisualScripting;
 
 public class PlayerAttack : MonoBehaviour
@@ -17,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
     private bool attackInput = false;
     private Player_BloodGuage bloodGuage => GetComponent<Player_BloodGuage>();
     [SerializeField] private int bloodGainPerAttack = 20;
+    private InteractableCharacter enemy;
 
     void Update()
     {
@@ -35,6 +35,7 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("Attacked enemy!");
             // apply damage to enemy (set their gameobject to false or destroy)
             other.gameObject.SetActive(false);
+            enemy = other.gameObject.GetComponent<InteractableCharacter>();
             // fill blood guage
             bloodGuage.GetBlood(bloodGainPerAttack);
             Debug.Log("Gained blood: " + bloodGainPerAttack + " from enemy!");
@@ -57,6 +58,15 @@ public class PlayerAttack : MonoBehaviour
         if(context.started)
         {
             attackInput = true;
+            if (enemy.isHunter)
+            {
+                UIManager.Instance.ActivateWinUI();
+            }
+            else
+            {
+                UIManager.Instance.ActivateLoseUI();
+            }
+            //enemy.Attack();
             //Debug.Log("Attack started");
         }
         if(context.canceled)

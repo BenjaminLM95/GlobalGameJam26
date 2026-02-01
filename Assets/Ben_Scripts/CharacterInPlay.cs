@@ -47,11 +47,16 @@ public class CharacterInPlay : MonoBehaviour
     }
 
 
-    [System.Serializable]
-    public struct Participant 
+public void SetHunterInList(List<GameObject> _participants)
     {
-        GameObject participantObj;
-        string participantName;
+        for(int i = 0; i < _participants.Count; i++)
+        {
+           if(_participants[i].GetComponent<InteractableCharacter>().GetParticipantName() == targetSystem.GetHunterName())
+           {
+            _participants[i].GetComponent<InteractableCharacter>().BecomesTheHunter(); 
+            }
+        }
     }
+
 
 }

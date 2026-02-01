@@ -15,9 +15,8 @@ MonoBehaviour:
   _characterName: Eddie
   _favColor: 2
   _gender: 0
-  _keyword: 
   keyWords:
-  - blue
+  - bluecolor
   - female
   - stake
   allOptionDialogue:

@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
     [SerializeField]private UserInput inputManager;
 
@@ -19,23 +20,36 @@ public class UIManager : MonoBehaviour
 
     private GameObject lastActiveUI;
 
-    public GameObject gameplayObjects; 
+    public GameObject gameplayObjects;
+
+    public override void Awake()
+    {
+        base.Awake();
+    }
 
     void Start()
     {
-        ActivateMenuUI();
+        //ActivateMenuUI();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            ActivateJournalUI();
+        }
     }
 
     void OnEnable()
     {
         inputManager.OnPauseInputEvent += ActivatePauseUI;
-        inputManager.OnJournalInputEvent += ActivateJournalUI;
+        //inputManager.OnJournalInputEvent += ActivateJournalUI;
     }
 
     void OnDestroy()
     {
         inputManager.OnPauseInputEvent -= ActivatePauseUI;
-        inputManager.OnJournalInputEvent -= ActivateJournalUI;
+        //inputManager.OnJournalInputEvent -= ActivateJournalUI;
     }
 
     public void ActivateMenuUI() 
@@ -67,13 +81,11 @@ public class UIManager : MonoBehaviour
         ActivateUI(sceneUI);
     }
 
-    public void ActivateJournalUI(InputAction.CallbackContext context) 
+    public void ActivateJournalUI() 
     {
-        if(context.performed){
-            AudioManager.Instance.PlaySFX("JournalOpening");
-            ActivateUI(journalUI);
-            PauseTime();
-        }
+        AudioManager.Instance.PlaySFX("JournalOpening");
+        ActivateUI(journalUI);
+        PauseTime();
     }
 
     public void ActivateWinUI() 
@@ -116,9 +128,11 @@ public class UIManager : MonoBehaviour
         PauseTime();
     }
 
+
     private void DisactivateAllUI() 
     {
-        mainMenuUI.SetActive(false);
+        //if(mainMenuUI != null)
+            //mainMenuUI.SetActive(false);
         pauseUI.SetActive(false);
         gameplayUI.SetActive(false);
         sceneUI.SetActive(false);

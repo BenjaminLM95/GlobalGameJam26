@@ -8,11 +8,19 @@ public class InteractableCharacter : BaseInteractable
     public string characterDialogue;
     private int currentDialogueIndex = 0;
 
+    public bool isHunter = false; 
+
 
     private void Awake()
     {
         gameObject.tag = "Interactable";
+        isHunter = false; 
         GetRandomMood();
+    }
+
+    void OnDisable()
+    {
+        //isHunter = false; 
     }
 
     public override void Interact()
@@ -58,5 +66,10 @@ public class InteractableCharacter : BaseInteractable
     public string GetParticipantName() 
     {
         return characterData.name; 
+    }
+
+    public void BecomesTheHunter()
+    {
+        isHunter = true; 
     }
 }

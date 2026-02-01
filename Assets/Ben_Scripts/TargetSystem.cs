@@ -36,6 +36,8 @@ public class TargetSystem : MonoBehaviour
 
         characterInPlay.DisactivateTarget(); 
 
+        characterInPlay.SetHunterInList(characterInPlay.participants); 
+
     }
 
     // Update is called once per frame
@@ -92,6 +94,8 @@ public class TargetSystem : MonoBehaviour
         _charDatas.RemoveAt(rndIndex);
 
         PopMurderMessageUp(); 
+
+        
     }
 
     private void PopMurderMessageUp() 
