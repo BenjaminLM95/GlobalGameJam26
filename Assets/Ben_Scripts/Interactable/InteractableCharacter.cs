@@ -13,7 +13,7 @@ public class InteractableCharacter : BaseInteractable
 
     private void Awake()
     {
-        gameObject.tag = "Interactable";
+        gameObject.tag = "Enemy";
         isHunter = false; 
         GetRandomMood();
     }

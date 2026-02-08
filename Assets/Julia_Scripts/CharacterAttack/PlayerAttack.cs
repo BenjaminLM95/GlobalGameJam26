@@ -16,7 +16,7 @@ public class PlayerAttack : MonoBehaviour
     private bool attackInput = false;
     private Player_BloodGuage bloodGuage => GetComponent<Player_BloodGuage>();
     [SerializeField] private int bloodGainPerAttack = 20;
-    private InteractableCharacter enemy;
+    [SerializeField] private InteractableCharacter enemy;
 
     void Update()
     {
@@ -30,16 +30,24 @@ public class PlayerAttack : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Enemy") && attackInput)
+        if(other.CompareTag("Enemy") && enemy == null)
         {
             Debug.Log("Attacked enemy!");
             // apply damage to enemy (set their gameobject to false or destroy)
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
             enemy = other.gameObject.GetComponent<InteractableCharacter>();
             // fill blood guage
             bloodGuage.GetBlood(bloodGainPerAttack);
             Debug.Log("Gained blood: " + bloodGainPerAttack + " from enemy!");
             Debug.Log("Current Blood: " + bloodGuage.currentBlood);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Enemy")) 
+        {
+            enemy = null; 
         }
     }
 
@@ -55,24 +63,28 @@ public class PlayerAttack : MonoBehaviour
 
     void AttackHandler(InputAction.CallbackContext context)
     {
-        if(context.started)
+        if (enemy != null)
         {
-            attackInput = true;
-            if (enemy.isHunter)
+
+            if (context.started)
             {
-                UIManager.Instance.ActivateWinUI();
+                attackInput = true;
+                if (enemy.isHunter)
+                {
+                    UIManager.Instance.ActivateWinUI();
+                }
+                else
+                {
+                    UIManager.Instance.ActivateLoseUI();
+                }
+                //enemy.Attack();
+                //Debug.Log("Attack started");
             }
-            else
+            if (context.canceled)
             {
-                UIManager.Instance.ActivateLoseUI();
+                //attackInput = false;
+                //Debug.Log("Attack cancelled");
             }
-            //enemy.Attack();
-            //Debug.Log("Attack started");
-        }
-        if(context.canceled)
-        {
-            //attackInput = false;
-            //Debug.Log("Attack cancelled");
         }
     }
     
