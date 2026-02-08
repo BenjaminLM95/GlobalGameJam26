@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class Journal : MonoBehaviour
+public class Journal : Singleton<Journal>
 {
     private CharacterData character;
     private string hunterName;
@@ -21,6 +21,11 @@ public class Journal : MonoBehaviour
         Events.AddHunterName.Add(SetHunterName);
         Events.AddClueToJournal.Add(ActivateClue);
         SetAllInactive();
+    }
+
+    public override void Awake()
+    {
+        base.Awake();
     }
 
     private void ActivateClue(string name)

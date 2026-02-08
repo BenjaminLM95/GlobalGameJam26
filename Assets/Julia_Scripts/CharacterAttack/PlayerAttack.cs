@@ -18,6 +18,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private int bloodGainPerAttack = 20;
     [SerializeField] private InteractableCharacter enemy;
 
+    [SerializeField] private UIManager _uiManager; 
+
     void Update()
     {
         HandleAttackInput();
@@ -69,13 +71,21 @@ public class PlayerAttack : MonoBehaviour
             if (context.started)
             {
                 attackInput = true;
+
+                if(_uiManager == null) 
+                {
+                    _uiManager = FindFirstObjectByType<UIManager>();
+                }
+
+                if (_uiManager == null) return; 
+
                 if (enemy.isHunter)
                 {
-                    UIManager.Instance.ActivateWinUI();
+                    _uiManager.ActivateWinUI();
                 }
                 else
                 {
-                    UIManager.Instance.ActivateLoseUI();
+                    _uiManager.ActivateLoseUI();
                 }
                 //enemy.Attack();
                 //Debug.Log("Attack started");

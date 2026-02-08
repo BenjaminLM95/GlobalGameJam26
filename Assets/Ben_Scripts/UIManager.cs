@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class UIManager : Singleton<UIManager>
+public class UIManager : MonoBehaviour
 {
     private UserInput inputManager;
 
@@ -22,11 +22,7 @@ public class UIManager : Singleton<UIManager>
 
     public GameObject gameplayObjects;
   
-
-    public override void Awake()
-    {
-        base.Awake();
-    }
+       
 
     void Start()
     {

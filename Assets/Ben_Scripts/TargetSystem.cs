@@ -16,7 +16,7 @@ public class TargetSystem : MonoBehaviour
     public TextMeshProUGUI messageKilled;
 
     private CharacterInPlay characterInPlay;
-    public TextMeshProUGUI killText;
+    public GameObject killText;
 
     private void Awake()
     {
@@ -26,7 +26,9 @@ public class TargetSystem : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        ClearData(); 
+        ClearData();
+
+        killText = GameObject.Find("KillText"); 
 
         // Select the victim
         PickAVictim(tempCharacterList);
@@ -37,6 +39,8 @@ public class TargetSystem : MonoBehaviour
         characterInPlay.DisactivateTarget(); 
 
         characterInPlay.SetHunterInList(characterInPlay.participants); 
+
+        
 
     }
 
@@ -101,7 +105,7 @@ public class TargetSystem : MonoBehaviour
     private void PopMurderMessageUp() 
     {
         killText.gameObject.SetActive(true);
-        killText.text = $"{victim.name} was killed";
+        killText.GetComponent<TextMeshProUGUI>().text = $"{victim.name} was killed";       
         //StartCoroutine(RemoveMurderKill()); 
     }
 

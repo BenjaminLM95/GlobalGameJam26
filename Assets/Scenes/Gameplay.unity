@@ -12750,59 +12750,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4522803427837239671, guid: 522cfc10b22dba948b5d21f281e16729, type: 3}
   m_PrefabInstance: {fileID: 1472286744}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1474200979
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1474200981}
-  - component: {fileID: 1474200980}
-  m_Layer: 0
-  m_Name: Journal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1474200980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1474200979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43eff0e434f816b4e8ea6d2687ddb642, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorRed: {fileID: 0}
-  colorGreen: {fileID: 0}
-  colorBlue: {fileID: 0}
-  holyWater: {fileID: 0}
-  stake: {fileID: 0}
-  garlic: {fileID: 0}
-  male: {fileID: 0}
-  female: {fileID: 0}
-  nameText: {fileID: 0}
---- !u!4 &1474200981
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1474200979}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.749453, y: -14.968128, z: 33.63678}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1482625614
 GameObject:
   m_ObjectHideFlags: 0
@@ -19801,4 +19748,3 @@ SceneRoots:
   - {fileID: 1057426473}
   - {fileID: 522194642}
   - {fileID: 2010618965}
-  - {fileID: 1474200981}
