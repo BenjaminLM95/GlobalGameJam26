@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : Singleton<UIManager>
 {
-    [SerializeField]private UserInput inputManager;
+    private UserInput inputManager;
 
     [Header("All the UIs objects")]
     public GameObject mainMenuUI;
@@ -21,6 +21,7 @@ public class UIManager : Singleton<UIManager>
     private GameObject lastActiveUI;
 
     public GameObject gameplayObjects;
+  
 
     public override void Awake()
     {
@@ -29,7 +30,8 @@ public class UIManager : Singleton<UIManager>
 
     void Start()
     {
-        //ActivateMenuUI();
+        ActivateMenuUI();
+        
     }
 
     void Update()
@@ -42,19 +44,26 @@ public class UIManager : Singleton<UIManager>
 
     void OnEnable()
     {
-        inputManager.OnPauseInputEvent += ActivatePauseUI;
+        //inputManager.OnPauseInputEvent += ActivatePauseUI;
         //inputManager.OnJournalInputEvent += ActivateJournalUI;
     }
 
     void OnDestroy()
     {
-        inputManager.OnPauseInputEvent -= ActivatePauseUI;
+        //inputManager.OnPauseInputEvent -= ActivatePauseUI;
         //inputManager.OnJournalInputEvent -= ActivateJournalUI;
     }
 
     public void ActivateMenuUI() 
     {
         AudioManager.Instance.PlayMusic("MainMenuMusic");
+        ActivateUI(mainMenuUI);
+        PauseTime();       
+        //LevelManager.Instance.GoToMenuScene();
+    }
+
+    public void ResumeMenuUI() 
+    {
         ActivateUI(mainMenuUI);
         PauseTime();
     }
@@ -73,6 +82,13 @@ public class UIManager : Singleton<UIManager>
         AudioManager.Instance.PlayMusic("GameplayMusic");
         ActivateUI(gameplayUI);
         gameplayObjects.SetActive(true);
+        ResumeTime();
+        LevelManager.Instance.GoToGameplayScene(); 
+    }
+
+    public void ResumeGamePlay() 
+    {
+        ActivateUI(gameplayUI);
         ResumeTime();
     }
 
@@ -131,8 +147,7 @@ public class UIManager : Singleton<UIManager>
 
     private void DisactivateAllUI() 
     {
-        //if(mainMenuUI != null)
-            //mainMenuUI.SetActive(false);
+        mainMenuUI.SetActive(false);
         pauseUI.SetActive(false);
         gameplayUI.SetActive(false);
         sceneUI.SetActive(false);
@@ -144,6 +159,14 @@ public class UIManager : Singleton<UIManager>
         introUI.SetActive(false);
         gameplayObjects.SetActive(false);
         
+    }
+
+    public void GetInputManager() 
+    {
+        if(inputManager == null) 
+        {
+            inputManager = FindFirstObjectByType<UserInput>(); 
+        }
     }
 
     public void QuitGame() 
