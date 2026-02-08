@@ -20,14 +20,16 @@ public class UIManager : MonoBehaviour
 
     private GameObject lastActiveUI;
 
-    public GameObject gameplayObjects;
+   public GameObject gameplayObjects;
   
        
 
     void Start()
     {
-        ActivateMenuUI();
-        
+        AudioManager.Instance.PlayMusic("MainMenuMusic");
+        ActivateUI(mainMenuUI);
+        PauseTime();
+
     }
 
     void Update()
@@ -54,8 +56,9 @@ public class UIManager : MonoBehaviour
     {
         AudioManager.Instance.PlayMusic("MainMenuMusic");
         ActivateUI(mainMenuUI);
-        PauseTime();       
-        //LevelManager.Instance.GoToMenuScene();
+        PauseTime();
+        gameplayObjects.SetActive(false);
+        LevelManager.Instance.GoToMenuScene();
     }
 
     public void ResumeMenuUI() 
@@ -103,12 +106,14 @@ public class UIManager : MonoBehaviour
     public void ActivateWinUI() 
     {
         ActivateUI(winUI);
+        PauseTime();
     }
 
     public void ActivateLoseUI()
     {
         AudioManager.Instance.PlayMusic("GameOverMusic");
         ActivateUI(loseUI);
+        PauseTime();
     }
 
     public void ActivateSettingsUI() 
@@ -153,7 +158,7 @@ public class UIManager : MonoBehaviour
         settingsUI.SetActive(false);
         creditsUI.SetActive(false);
         introUI.SetActive(false);
-        gameplayObjects.SetActive(false);
+        
         
     }
 

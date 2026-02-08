@@ -8,17 +8,31 @@ public class Player_BloodGuage : MonoBehaviour
     [SerializeField] private float bloodDecayRate = 0.1f;
     public BloodGuage_UI bloodGuageUI;
 
+    private UIManager _uiManager; 
 
     void Start()
     {
-        currentBlood = maxBlood;
-        bloodGuageUI.SetMaxBlood(maxBlood);
+        FillGauge(); 
         Debug.Log("Starting blood: " + currentBlood);
+        _uiManager = FindFirstObjectByType<UIManager>();
     }
 
     void Update()
     {
         StartCoroutine(BloodDecay(01));
+
+        if(currentBlood < 1) 
+        {
+            if(_uiManager == null) 
+            {
+                _uiManager = FindFirstObjectByType<UIManager>(); 
+            }
+
+            if (_uiManager != null)
+            {
+                _uiManager.ActivateLoseUI();
+            }
+        }
     }
 
     public void GetBlood(int amount)
@@ -30,6 +44,12 @@ public class Player_BloodGuage : MonoBehaviour
         }
         //Debug.Log($"Got blood! Current Blood: {currentBlood}");
         bloodGuageUI.SetBlood(currentBlood);
+    }
+
+    public void FillGauge() 
+    {
+        currentBlood = maxBlood;
+        bloodGuageUI.SetMaxBlood(maxBlood);
     }
 
     IEnumerator BloodDecay(float amount)

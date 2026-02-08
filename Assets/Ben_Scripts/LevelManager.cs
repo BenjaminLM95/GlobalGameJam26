@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : Singleton<LevelManager>
 {
+    public Player_BloodGuage playerBloodGauge; 
+    public PlayerController playerController;
+
     public override void Awake()
     {
         base.Awake();
@@ -22,11 +25,17 @@ public class LevelManager : Singleton<LevelManager>
 
     public void GoToGameplayScene() 
     {
-        SceneManager.LoadScene("Gameplay"); 
+        SceneManager.LoadScene("Gameplay");
+        playerBloodGauge.FillGauge();       
     }
 
     public void GoToMenuScene() 
     {
         SceneManager.LoadScene("MainMenu"); 
+    }
+
+    public void QuitGame() 
+    {
+        Application.Quit();
     }
 }

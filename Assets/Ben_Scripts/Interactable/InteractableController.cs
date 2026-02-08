@@ -13,15 +13,24 @@ public class InteractableController : MonoBehaviour
     public float rayDistance = 5f;       // How far the ray should go
     public LayerMask hitLayers;           // Layers to detect (set in Inspector)
 
+    private UIManager _uiManager; 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
     {
-        userInput.InteractInputEvent += InteractWithObject; 
+        userInput.InteractInputEvent += InteractWithObject;
+        userInput.OnPauseInputEvent += PauseGame; 
     }
 
     private void OnDisable()
     {
         userInput.InteractInputEvent -= InteractWithObject;
+        userInput.OnPauseInputEvent -= PauseGame;
+    }
+
+    private void Start()
+    {
+        _uiManager = FindFirstObjectByType<UIManager>();
     }
 
     // Update is called once per frame
@@ -64,7 +73,18 @@ public class InteractableController : MonoBehaviour
         }
     }
 
+    private void PauseGame(InputAction.CallbackContext context) 
+    {
+        if(_uiManager == null) 
+        {
+            _uiManager = FindFirstObjectByType<UIManager>();
+        }
 
+        if (_uiManager == null)
+            return;
+
+        _uiManager.ActivatePauseUI(context); 
+    }
 
 
 

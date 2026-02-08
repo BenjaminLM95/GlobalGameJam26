@@ -41,7 +41,9 @@ public class PlayerController : MonoBehaviour
 
     private bool sprintInput = false;
     private bool jumpInput = false;
+       
 
+      
     private void Update()
     {
         HandlePlayerMovement();
@@ -137,6 +139,7 @@ public class PlayerController : MonoBehaviour
 
         cameraRoot.localEulerAngles = new Vector3(newRotationX, 0, 0);
     }
+        
 
     void SetMoveInput(Vector2 inputVector)
     {

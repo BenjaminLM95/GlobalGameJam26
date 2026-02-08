@@ -39,9 +39,9 @@ public class PlayerAttack : MonoBehaviour
             //other.gameObject.SetActive(false);
             enemy = other.gameObject.GetComponent<InteractableCharacter>();
             // fill blood guage
-            bloodGuage.GetBlood(bloodGainPerAttack);
-            Debug.Log("Gained blood: " + bloodGainPerAttack + " from enemy!");
-            Debug.Log("Current Blood: " + bloodGuage.currentBlood);
+            //bloodGuage.GetBlood(bloodGainPerAttack);
+            //Debug.Log("Gained blood: " + bloodGainPerAttack + " from enemy!");
+            //Debug.Log("Current Blood: " + bloodGuage.currentBlood);
         }
     }
 
