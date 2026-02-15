@@ -4,20 +4,35 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T _instance;
 
-    public static T Instance { get { return _instance; } }
+    public static T Instance
+    {
+        #region Singleton Instance Getter
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindFirstObjectByType<T>();
+                if (_instance == null)
+                {
+                    GameObject singletonGO = new GameObject(typeof(T).Name);
+                    _instance = singletonGO.AddComponent<T>();
+
+                }
+            }
+            return _instance;
+        }
+        #endregion
+    }
     public virtual void Awake()
     {
         #region Singleton Pattern
-        if (_instance != null)
+        if (_instance != null && _instance != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-            _instance = this as T;
-        }
+        _instance = this as T;
+        DontDestroyOnLoad(gameObject);
         #endregion
     }
 }
