@@ -51,7 +51,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public void StartDialogue(string sentence)
     {
-        Debug.Log("Starting dialogue");
+        //Debug.Log("Starting dialogue");
         dialogueSentence.Clear();
         dialoguePanel.SetActive(true);
 
@@ -106,7 +106,7 @@ public class DialogueManager : Singleton<DialogueManager>
             // Play type writer sound here.
             // While coroutine is running, display the sentence letter by letter.
             dialogueText.text = currentSentence.Substring(0, i + 1);
-            Debug.Log("Started dialogue coroutine...");
+            //Debug.Log("Started dialogue coroutine...");
             yield return new WaitForSecondsRealtime(0.05f);
         }
         yield return new WaitForSecondsRealtime(2f);
@@ -116,8 +116,8 @@ public class DialogueManager : Singleton<DialogueManager>
 
     private void CloseDialogueBox()
     {
+        isDialogueStarted = false;
         dialogueText.text = string.Empty;
         dialoguePanel.SetActive(false);
-        isDialogueStarted = false;
     }
 }

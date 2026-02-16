@@ -20,8 +20,7 @@ MonoBehaviour:
   - male
   - stake
   allOptionDialogue:
+  - I saw a flash of green from the other room
+  - I thought I saw a male enter the bathroom before the murder
   - You look like you could use a meal. I prefer steak, I use a stake to pierce it
     for dramatic effect when eating.
-  - I thought I saw a male enter the bathroom before the murder
-  - I saw a flash of green from the other room
-  - ...hello...

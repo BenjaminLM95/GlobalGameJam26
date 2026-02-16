@@ -34,7 +34,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if(other.CompareTag("Enemy") && enemy == null)
         {
-            Debug.Log("Attacked enemy!");
+            //Debug.Log("Attacked enemy!");
             // apply damage to enemy (set their gameobject to false or destroy)
             //other.gameObject.SetActive(false);
             enemy = other.gameObject.GetComponent<InteractableCharacter>();

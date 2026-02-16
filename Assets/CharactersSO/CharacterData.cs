@@ -27,7 +27,7 @@ public class CharacterData : ScriptableObject //, Imo
     public favColor _favColor;
     public gender _gender;
     //public string _keyword;
-    public string[] keyWords = new string[4];
+    public List<string> keyWords = new List<string>(4);
 
     public string[] allOptionDialogue = new string[4];
 

@@ -54,6 +54,7 @@ public void SetHunterInList(List<GameObject> _participants)
            if(_participants[i].GetComponent<InteractableCharacter>().GetParticipantName() == targetSystem.GetHunterName())
            {
             _participants[i].GetComponent<InteractableCharacter>().BecomesTheHunter(); 
+          
             }
         }
     }

@@ -15,7 +15,6 @@ MonoBehaviour:
   _characterName: Benjamin
   _favColor: 1
   _gender: 1
-  _keyword: 
   keyWords:
   - male
   - green
@@ -23,5 +22,4 @@ MonoBehaviour:
   allOptionDialogue:
   - A male was pushing people right before the death
   - I saw a green clad figure run away from the body
-  - I love the color green, it makes me happy!
   - I like using garlic

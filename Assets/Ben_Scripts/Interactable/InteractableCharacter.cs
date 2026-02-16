@@ -1,9 +1,10 @@
+using System.Linq;
 using UnityEngine;
-
 
 public class InteractableCharacter : BaseInteractable
 {
     [SerializeField] private CharacterData characterData;
+    public CharacterData hunterData;
     [SerializeField] private bool firstTime = false;
     public string characterDialogue;
     private int currentDialogueIndex = 0;
@@ -14,7 +15,6 @@ public class InteractableCharacter : BaseInteractable
     private void Awake()
     {
         gameObject.tag = "Enemy";
-        isHunter = false; 
         GetRandomMood();
     }
 
@@ -28,21 +28,24 @@ public class InteractableCharacter : BaseInteractable
         Debug.Log("Interact called");
         GetRandomMood();
 
-        if (!firstTime)
+        /*if (!firstTime)
         {
             // Check if its the first time talking to the character, in that case you get their info in the journey
             Events.OnAddJournalEntry.Publish(characterData);
             firstTime = true;
-        }
+        }*/
 
         if (!DialogueManager.Instance.IsDialogueStarted)
         {
             // TODO instead of publishing entire string, find a key word to give clue of who is talking.
-            if(currentDialogueIndex < characterData.keyWords.Length && currentDialogueIndex > 0)
+            if(currentDialogueIndex < characterData.keyWords.Count && currentDialogueIndex >= 0)
             {
                 Debug.Log("Adding clue to journal");
                 string clue = characterData.keyWords[currentDialogueIndex];
-                Events.AddClueToJournal.Publish(clue);
+                Debug.Log("Clue is" + clue);
+               
+                 Events.TryAddClueToJournal.Publish(clue);
+                //Events.TryAddClueToJournal.Publish(clue);
             }
             Events.OnDialogueStarted.Publish(characterDialogue);
         }
@@ -52,9 +55,9 @@ public class InteractableCharacter : BaseInteractable
     public void GetRandomMood() 
     {
         // Get a random number between 1 and the length of all the dialogue the character has. In this case should have 4
-        int randomNumber = Random.Range(1, characterData.allOptionDialogue.Length + 1);
+        currentDialogueIndex = Random.Range(1, characterData.allOptionDialogue.Length + 1);
         // Based on that random number, will get the string based on the array
-        characterDialogue = GetTheDialogue(randomNumber);
+        characterDialogue = GetTheDialogue(currentDialogueIndex);
     }
 
     public string GetTheDialogue(int numIndex) 

@@ -15,13 +15,11 @@ MonoBehaviour:
   _characterName: Eva
   _favColor: 0
   _gender: 0
-  _keyword: 
   keyWords:
   - female
   - red
   - garlic
   allOptionDialogue:
-  - Hi how are you? I smell garlic
-  - I think red is a mysterious color
   - They think they're big and strong for usng that, I like garlic better
-  - Why do I keep hearing voices? Most are female...
+  - I think red is a mysterious color
+  - Hi how are you? I smell garlic

@@ -14,22 +14,27 @@ public class Journal : Singleton<Journal>
     [SerializeField] private GameObject male;
     [SerializeField] private GameObject female;
     [SerializeField] private TextMeshProUGUI nameText;
+    public CharacterData hunterData;
 
-    private void OnEnable()
-    {
-        Events.OnHunterPicked.Add(SetCharacter);
-        Events.AddHunterName.Add(SetHunterName);
-        Events.AddClueToJournal.Add(ActivateClue);
-        SetAllInactive();
-    }
 
     public override void Awake()
     {
         base.Awake();
+        Events.OnHunterPicked.Add(SetHunterData);
+        // Events.OnHunterPicked.Add(SetCharacter);
+        Events.TryAddClueToJournal.Add(ActivateClue);
+        SetAllInactive();
+    }
+
+    private void SetHunterData(CharacterData _hunterData)
+    {
+        hunterData = _hunterData;
     }
 
     private void ActivateClue(string name)
     {
+        if (!hunterData.keyWords.Contains(name)) return;
+        Debug.Log("Clue name in journal is " + name);
         if (colorRed.name == name) colorRed.SetActive(true);
         if (colorGreen.name == name) colorGreen.SetActive(true);
         if (colorBlue.name == name) colorBlue.SetActive(true);
@@ -38,23 +43,6 @@ public class Journal : Singleton<Journal>
         if (garlic.name == name) garlic.SetActive(true);
         if (male.name == name) male.SetActive(true);
         if (female.name == name) female.SetActive(true);
-    }
-
-    private void OnDisable()
-    {
-        Events.AddHunterName.Add(SetHunterName);
-        Events.OnHunterPicked.Add(SetCharacter);
-    }
-
-    private void SetCharacter(CharacterData character)
-    {
-        this.character = character;
-    }
-
-    private void SetHunterName(string name)
-    {
-        hunterName = name;
-        nameText.text = hunterName;
     }
 
     private void SetAllInactive()

@@ -79,8 +79,8 @@ public class TargetSystem : MonoBehaviour
         CharacterData removedItem = _charDatas[rndIndex];       
         Debug.Log(removedItem.name);
         Events.AddHunterName.Publish(removedItem.name);
+        hunter = removedItem;
         Events.OnHunterPicked.Publish(hunter);
-        hunter = removedItem;          
     }
 
     private void PickAVictim(List<CharacterData> _charDatas)
