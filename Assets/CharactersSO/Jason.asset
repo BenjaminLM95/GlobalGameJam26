@@ -20,7 +20,6 @@ MonoBehaviour:
   - male
   - stake
   allOptionDialogue:
-  - I found a blue cloth on the floor, I wonder whose it is?
-  - I heard a male voice before the death.
-  - I hear a steak through the heart will cause a heart attack... bad dietary choices
-    kill
+  - The person I passed was definitely wearing red.
+  - That wound looks clean, it was most likely from garlic.
+  - I saw a male enter the room after dinner.

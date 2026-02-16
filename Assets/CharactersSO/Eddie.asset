@@ -20,6 +20,6 @@ MonoBehaviour:
   - female
   - stake
   allOptionDialogue:
-  - I thought I saw the killer wearing blue.
-  - I think I heard a female grunt before a sickening sound
-  - I like a big steak with my dinner!
+  - "The killer was male. I\u2019m certain of that."
+  - Someone wearing red brushed past me in the hallway.
+  - I saw someone earlier carrying holy water around.

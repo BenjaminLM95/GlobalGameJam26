@@ -20,6 +20,6 @@ MonoBehaviour:
   - female
   - garlic
   allOptionDialogue:
-  - You look like you could use a mea, some green vaggies!
-  - I think females in STEM are nice
-  - They say the color of garlic goes with everything. I'm hungry
+  - "I noticed blue threads stuck to the victim\u2019s sleeve."
+  - I didn't think holy water was used, but everyone else said it was
+  - A man ran out of the room just before the scream.

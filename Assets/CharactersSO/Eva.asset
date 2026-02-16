@@ -20,6 +20,6 @@ MonoBehaviour:
   - red
   - garlic
   allOptionDialogue:
-  - They think they're big and strong for usng that, I like garlic better
-  - I think red is a mysterious color
-  - Hi how are you? I smell garlic
+  - "The green scarf near the scene doesn\u2019t belong to the victim."
+  - It had to have been a stake, did you see the wound?
+  - "I\u2019m positive the voice I heard was female."
