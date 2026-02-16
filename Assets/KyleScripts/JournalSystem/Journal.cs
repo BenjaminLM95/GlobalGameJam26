@@ -45,7 +45,7 @@ public class Journal : Singleton<Journal>
         if (female.name == name) female.SetActive(true);
     }
 
-    private void SetAllInactive()
+    public void SetAllInactive()
     {
         colorRed.gameObject.SetActive(false);
         colorGreen.gameObject.SetActive(false);

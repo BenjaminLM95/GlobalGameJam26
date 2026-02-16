@@ -19,7 +19,7 @@ public class Player_BloodGuage : MonoBehaviour
 
     void Update()
     {
-        StartCoroutine(BloodDecay(01));
+        StartCoroutine(BloodDecay(bloodDecayRate));
 
         if(currentBlood < 1) 
         {

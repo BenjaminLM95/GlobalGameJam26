@@ -27,7 +27,11 @@ public class LevelManager : Singleton<LevelManager>
 
     void onSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-               
+        if (Journal.Instance != null)
+        {
+            Journal.Instance.SetAllInactive();
+        }
+        StopAllCoroutines();
         PlayerGoToSpawnPoint(); 
 
     }
